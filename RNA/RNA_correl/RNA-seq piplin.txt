@@ -1,0 +1,22 @@
+*** RNA-Seq Data Analysis ***
+
+1.Download the SRA ids from GEO database
+
+2.Download the SRAToolKit tool to download the SRA files and FastQ files
+	a. Prefetch: to download SRA files either run the following : (First upload the file SRR_Acc_List.txt)
+		for line in `cat SRR_Acc_List.txt `;  do ./sratoolkit.2.11.3-centos_linux64/bin/prefetch $line ; done
+	b. Fastq-dump: to download FastQ files either run the following :
+		for line in `cat SRR_Acc_List.txt `;  do ./sratoolkit.2.11.3-centos_linux64/bin/fastq-dump $line ; done
+		mkdir fastq
+		mv *.fastq fastq/
+
+3.Calculate the expression using RSEM
+	a.Download RSEM and download the reference
+	b.Prepare Reference
+		cd RSEM_tutorial-master./software/RSEM-1.2.25/rsem-prepare-reference --gtf ref
+		/Saccharomyces_cerevisiae.R64-1-1.100.gtf --bowtie2 --bowtie2-path software/bowtie2-2.2.6 ref
+		/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa ref/yeast_ref
+	c.Calculate Expression 
+	for line in `cat SRR_Acc_List.txt `;  do ./RSEM_tutorial-master/software/RSEM-1.2.25/rsem-calculate-expression --bowtie2 --bowtie2-path 
+	./RSEM_tutorial-master/software/bowtie2-2.2.6 --estimate-rspd --append-names 
+	./fastq/${line}.fastq ./RSEM_tutorial-master/ref/yeast_ref ./exp/$line ; done
