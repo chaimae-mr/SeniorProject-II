@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import statistics
 
-files = ["test_500_3"]
+files = ["Microarray_loci_pairs_500"]
 for fd in files:
     df2 = pd.read_csv("{}.csv".format(fd))
     df2.columns = ["chr1","loci1","chr2","loci2",'corr','freq']
@@ -20,10 +20,10 @@ for fd in files:
                 temp_corr.append(row['corr'])
         avg_corr.append(statistics.mean(temp_corr))
 
-    plt.plot(uniqe_values,avg_corr)
-    plt.xlabel('freq - offset500')
-    plt.ylabel('average correlation')
-    #plt.xlim(0, 50)  # set the limits of the x-axis
+    plt.plot(uniqe_values,avg_corr,color='red',linewidth=2)
+    plt.title('The average correlation between linked \ngenes Vs. count frequency  ',color='darkblue',fontsize=15)
+    plt.xlabel('4c count frequancy',fontsize=14)
+    plt.ylabel('Average correlation',fontsize=14)
+    plt.xlim(0, 45)  
     plt.show()
 
-    print(df2["corr"].mean())

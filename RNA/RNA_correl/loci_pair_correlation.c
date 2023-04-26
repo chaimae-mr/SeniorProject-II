@@ -199,7 +199,7 @@ void correl(hash_table_t *table) {
     char line[400];
     char *gene, *corr;
 
-    file = fopen("/home/chaimae/final_senior/RNA/exp data/correlation_RNA3.csv", "r");
+    file = fopen("/home/chaimae/final_senior/RNA/exp data/correlation_RNA.csv", "r");
     if (file == NULL) {
         printf("Error opening file3.\n");
         return;
@@ -380,7 +380,7 @@ void programe_run(struct data1 *loci_gene,hash_table_t *table,int len_loci_gene,
     char line[400];
     char *chrm1,*pos1,*chrm2,*pos2,*freq;
 
-    file = fopen("/home/chaimae/final_senior/RNA/exp data/loci_list.txt", "r");
+    file = fopen("/home/chaimae/final_senior/RNA/exp data/4C_data.txt", "r");
     if (file == NULL) {
         printf("Error opening file2.\n");
         return;
@@ -416,11 +416,11 @@ int main()
 {
     FILE *fd;
     char str[500];
-    sprintf(str,"/home/chaimae/final_senior/RNA/RNA_correl/test_%d_3.csv",OFFSET);
+    sprintf(str,"/home/chaimae/final_senior/RNA/RNA_correl/RNA_loci_pairs_%d_2.csv",OFFSET);
     fd = fopen(str,"w");
     if (fd == NULL) {
-        printf("Error opening file1111.\n");
-        return 0 ;
+        printf("Error opening file1.\n");
+        return 0 ;corr vs. freq.py
     }
 
 	struct data1 *loci_gene = (struct data1*) malloc(60000 * sizeof(struct data1));

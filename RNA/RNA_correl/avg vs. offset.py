@@ -13,7 +13,13 @@ for offset in list_offset:
     df.columns = ["chr1","loci1","chr2","loci2",'corr','freq']
     avg_corr.append(df["corr"].mean())
 
-plt.plot(list_offset,avg_corr)
-plt.xlabel('offset')
-plt.ylabel('average correlation')
+fig = plt.plot(list_offset,avg_corr,color='red',linewidth=2)
+plt.title('The average correlation Vs. the \ndistance (offset)',color='darkblue',fontsize=15)
+plt.xlabel('offset (bp)',fontsize=14)
+plt.ylabel('Average correlation',fontsize=14)
 plt.show()
+
+
+df2 = pd.read_csv("/home/chaimae/final_senior/RNA/exp data/correlation_RNA.csv")
+df2.columns = ["chr1",'freq']
+print(df2["freq"].mean())

@@ -22,7 +22,7 @@ int chr(struct data1 chr_genes[8000])
   // file pointer variable for accessing the file
 	FILE *file;
 
-	file = fopen("/home/chaimae/final_senior/loci_offset/exp data/SGD_features.csv", "r"); 
+	file = fopen("/home/chaimae/final_senior/loci_offset/exp data/chrm-gene.txt", "r"); 
   
 	if (file == NULL)
 	{
@@ -67,7 +67,7 @@ int loci(struct data2 unique_loci[4100])
 {
 	FILE *file;
 
-	file = fopen("/home/chaimae/final_senior/loci_offset/exp data/loci12_uniq.txt", "r"); 
+	file = fopen("/home/chaimae/final_senior/loci_offset/exp data/loci_uniq.txt", "r"); 
 
 	if (file == NULL)
 	{
@@ -149,7 +149,7 @@ int main(void)
 	FILE *fp;
 
 	char str[1000];
-	sprintf(str, "/home/chaimae/final_senior/loci_offset/loci_test2_%d.txt",OFFSET);
+	sprintf(str, "/home/chaimae/final_senior/loci_offset/loci_%d.txt",OFFSET);
 
 	fp = fopen(str, "w");
 

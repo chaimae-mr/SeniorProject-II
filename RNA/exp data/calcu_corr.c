@@ -56,7 +56,7 @@ int genes_p(struct data1 *genes)
 int correlation(float **data,struct data1 *genes)
 {
     FILE *fp;
-    fp = fopen("correlation_RNA.csv", "w");
+    fp = fopen("correlation_RNA_test.csv", "w");
 
     int i = 0;
     int j =0;

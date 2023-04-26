@@ -199,7 +199,7 @@ void correl(hash_table_t *table) {
     char line[400];
     char *gene, *corr;
 
-    file = fopen("/home/chaimae/final_senior/Microarray/exp data/new_gene_corr_list.txt", "r");
+    file = fopen("/home/chaimae/final_senior/Microarray/exp data/corr_list.txt", "r");
     if (file == NULL) {
         printf("Error opening file3.\n");
         return;
@@ -380,7 +380,7 @@ void programe_run(struct data1 *loci_gene,hash_table_t *table,int len_loci_gene,
     char line[400];
     char *chrm1,*pos1,*chrm2,*pos2,*freq;
 
-    file = fopen("/home/chaimae/final_senior/Microarray/exp data/new_loci_list.txt", "r");
+    file = fopen("/home/chaimae/final_senior/Microarray/exp data/4C_data.txt", "r");
     if (file == NULL) {
         printf("Error opening file2.\n");
         return;

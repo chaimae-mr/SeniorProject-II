@@ -11,8 +11,8 @@ for offset in list_offset:
     df.columns = ["chr1","loci1","chr2","loci2",'corr','freq']
     avg_corr.append(df["corr"].mean())
 
-plt.plot(list_offset,avg_corr)
-plt.xlabel('offset')
-# plt.xlim(0, 10000)  # set the limits of the x-axis
-plt.ylabel('average correlation')
+fig = plt.plot(list_offset,avg_corr,color='red',linewidth=2)
+plt.title('The average correlation Vs. the \ndistance (offset)',color='darkblue',fontsize=15)
+plt.xlabel('offset (bp)',fontsize=14)
+plt.ylabel('Average correlation',fontsize=14)
 plt.show()
