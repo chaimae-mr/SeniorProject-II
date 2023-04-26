@@ -1,0 +1,12 @@
+Raw Data downloading 
+	./bwa/bwa index -p bwa/yeast_index yeast.fa
+	I just chose the sample for Saccharomyces paradoxus from https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE88952
+	./sratoolkit.2.11.3-centos_linux64/bin/prefetch SRR4433963
+	./sratoolkit.2.11.3-centos_linux64/bin/fasterq-dumpSRR4433963
+
+steps of HiC pipeline which are next
+	time ./bwa/bwa mem bwa/yeast_index SRA_files/fastq/SRR4433963_1.fastq SRA_files/fastq/SRR4433963_2.fastq | ./samtools-1.17/samtools view -u - | ./samtools-1.17/samtools sort -l 9  - -o S_paradoxus/output_file.bam (585m49.933s)
+	time ./pairix/util/bam2pairs/bam2pairs -l S_paradoxus/output_file.bam S_paradoxus/output_file.hicup (2m27.822s)
+	faidx HicYeast/yeast.fa -i chromsizes > S_paradoxus/sizes.genome
+	time cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 sizes.genome:10000 S_paradoxus/output_file.hicup.bsorted.pairs.gz S_paradoxus/output_file.cool (0m9.524s)
+	cooler dump -t pixels --header --join S_paradoxus/output_file.cool > S_paradoxus/output_file.matrix
